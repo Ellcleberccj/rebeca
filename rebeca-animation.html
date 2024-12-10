@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rebeca Animation</title>
   <style>
+    /* Remover qualquer margem ou padding da página */
     body {
       margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f9f9f9;
+      background: transparent;
+      height: 100%;
+      width: 100%;
+      position: relative;
     }
 
+    /* Estilo para a mensagem personalizada (sem bubble do Typebot) */
     .message {
       font-size: 16px;
       color: #555;
@@ -25,6 +27,15 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeIn 1s ease forwards;
+      width: 80%; /* Ajuste o tamanho conforme necessário */
+      max-width: 300px;
+      text-align: center;
+
+      /* Garante que a mensagem tenha posição absoluta para não afetar outros elementos */
+      position: absolute;
+      top: 10%; /* Ajuste conforme a posição desejada */
+      left: 50%;
+      transform: translateX(-50%); /* Centraliza a mensagem */
     }
 
     @keyframes fadeIn {
@@ -33,9 +44,21 @@
         transform: translateY(0);
       }
     }
+
+    /* Personalização para mensagens que indicam "entrada na conversa" */
+    .message-enter {
+      background: #f0f0f0;
+      color: #007BFF; /* Cor personalizada para a mensagem */
+      font-weight: bold;
+    }
+
+    /* Opcional: Para garantir que a bubble padrão do Typebot não seja visível */
+    .typebot-bubble {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <div class="message">✨ Rebeca entrou na conversa</div>
+  <div class="message message-enter">✨ Rebeca entrou na conversa</div>
 </body>
 </html>
